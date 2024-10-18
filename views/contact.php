@@ -1,4 +1,10 @@
-        <!-- Page Header-->
+<?php 
+ if (isset($_SESSION['user_id'])) {
+    header("Location: ../index.php?page=home"); 
+    exit;
+}
+ ?>     
+     <!-- Page Header-->
         <header class="masthead" style="background-image: url('assets/img/contact-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
