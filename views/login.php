@@ -18,13 +18,18 @@
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="my-5">
+                    <?php if (isset($_SESSION['sign_in_error']) && !empty($_SESSION['sign_in_error'])): ?>
+                                <div class="alert alert-danger">
+                                    <?php echo htmlspecialchars($_SESSION['sign_in_error']) ;  unset($_SESSION['sign_in_error']);?>
+                                </div>
+                     <?php endif; ?>
                         <form action="../controllers/login_validation.php" method="POST">
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="email" type="email" placeholder="Enter your email..." required />
+                                <input class="form-control" id="email" type="email" name="email" placeholder="Enter your email..." required />
                                 <label for="email">Email address</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input class="form-control" id="password" type="password" placeholder="Enter your password..." required />
+                                <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password..." required />
                                 <label for="password">Password</label>
                             </div>
                             <button class="btn btn-primary text-uppercase" type="submit">Login</button>
