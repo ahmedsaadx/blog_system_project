@@ -12,7 +12,8 @@ try {
         'contact' => 'views/contact.php',
         'login' => 'views/login.php',
         'signup' => 'views/signup.php',
-        'logout' => 'views/logout.php'
+        'logout' => 'views/logout.php',
+        'create_post' => 'views/create_post.php'
     ];
 
     if (array_key_exists($page, $valid_pages)) {

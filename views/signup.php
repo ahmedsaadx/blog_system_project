@@ -46,19 +46,19 @@
 
                     <form action="../controllers/signup_validation.php" method="POST">
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="username" type="text" name="name" placeholder="Enter your username..." />
+                            <input class="form-control" id="username" type="text" name="name" placeholder="Enter your username..."  required/>
                             <label for="username">Username</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="email" type="email" name="email" placeholder="Enter your email..." />
+                            <input class="form-control" id="email" type="email" name="email" placeholder="Enter your email..." required />
                             <label for="email">Email address</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password..." />
+                            <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password..." required />
                             <label for="password">Password</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="confirm_password" type="password" name="confirm_password" placeholder="Confirm your password..." />
+                            <input class="form-control" id="confirm_password" type="password" name="confirm_password" placeholder="Confirm your password..."  required/>
                             <label for="confirm_password">Confirm Password</label>
                         </div>
                         <button class="btn btn-primary text-uppercase" type="submit">Sign Up</button>
