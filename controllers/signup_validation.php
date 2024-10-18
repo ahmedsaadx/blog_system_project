@@ -79,14 +79,8 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
                 exit;
             }
         }
-
-
     }
-
-   
-
 }
-
 function test_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
  }
