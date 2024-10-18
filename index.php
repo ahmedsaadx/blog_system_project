@@ -12,6 +12,7 @@ try {
         'contact' => 'views/contact.php',
         'login' => 'views/login.php',
         'signup' => 'views/signup.php',
+        'logout' => 'views/logout.php'
     ];
 
     if (array_key_exists($page, $valid_pages)) {
