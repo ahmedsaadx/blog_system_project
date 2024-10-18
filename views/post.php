@@ -1,7 +1,3 @@
-<?php 
-require_once('assets/header.php');
-
-?>
         <!-- Page Header-->
         <header class="masthead" style="background-image: url('assets/img/post-bg.jpg')">
             <div class="container position-relative px-4 px-lg-5">
@@ -52,8 +48,4 @@ require_once('assets/header.php');
             </div>
         </article>
         <!-- Footer-->
-     
-<?php 
-require_once('assets/footer.php');
 
-?>   

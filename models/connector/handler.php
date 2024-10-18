@@ -10,7 +10,7 @@ if (!file_exists($envPath)) {
     $db_host = $_ENV['DB_HOST'] ?? 'localhost';  
     $db_user = $_ENV['DB_USERNAME'] ?? 'root';
     $db_pass = $_ENV['DB_PASSWORD'] ?? '123456';
-    $db_name = $_ENV['DB_NAME'] ?? 'todo';
+    $db_name = $_ENV['DB_NAME'] ?? 'blog';
     $dsn = "mysql:host=$db_host;dbname=$db_name;charset=UTF8";
 
     try {
