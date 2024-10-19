@@ -37,18 +37,46 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
             $_SESSION["errors_post"]["post_photo_size"]="File size exceeds the maximum limit of 25";
         }
 
+        if (empty($_SESSION["errors_post"])) {
+            $uploadDir = '../uploads/'; 
+            $filePath = $uploadDir . basename($fileName);
+
+            if (!move_uploaded_file($_FILES["image"]["tmp_name"], $filePath)) {
+                $_SESSION["errors_post"]["post_image_upload"] = "Failed to upload image.";
+            }
+        }
     }
     if(!empty($_SESSION["errors_post"])){
         header("location: ../index.php?page=create_post");
         exit;
  
     }else{
-        $_SESSION["post_successfully"]="Post created successfully!";
-        header("location: ../index.php?page=create_post");
-        exit;
-     
+        $userId = $_SESSION['user_id'];
+        try {
+            $sql = "INSERT INTO posts (title, content, image_path, user_id) VALUES (:title, :content, :image_path, :user_id)";
+            $stmt = $pdo->prepare($sql); 
+            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
+            $stmt->bindParam(':content', $content, PDO::PARAM_STR);
+            $stmt->bindParam(':image_path', $filePath, PDO::PARAM_STR);
+            $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            if ($stmt->execute()) {
+                $_SESSION["post_successfully"] = "Post created successfully!";
+                header("location: ../index.php?page=create_post");
+                exit;
+            } else {
+                $_SESSION["errors_post"]["db_error"] = "Failed to create post. Please try again.";
+                header("location: ../index.php?page=create_post");
+                exit;
+            }
+        } catch (PDOException $e) {
+            $_SESSION["errors_post"]["db_error"] = "Database error: " . $e->getMessage();
+            header("location: ../index.php?page=create_post");
+            exit;
+        }
     }
+     
 }
+
 function test_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
  }

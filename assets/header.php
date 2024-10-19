@@ -28,7 +28,7 @@
                     <ul class="navbar-nav ms-auto py-4 py-lg-0">
                         <?php if(isset($_SESSION['user_id']) && isset($_SESSION['user_name'])): ?>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=home">Home</a></li>
-                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=post">My Post</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=post">My Posts</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=create_post">Create Post</a></li>
                         <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="index.php?page=logout">Logout</a></li>                         
                         <?php else: ?>
