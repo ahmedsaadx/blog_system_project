@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
+$faker = Faker\Factory::create();
 use Dotenv\Dotenv;
 $envPath = __DIR__ . '/../../.env';
 if (!file_exists($envPath)) {
@@ -12,7 +13,6 @@ if (!file_exists($envPath)) {
     $db_pass = $_ENV['DB_PASSWORD'] ?? '123456';
     $db_name = $_ENV['DB_NAME'] ?? 'blog';
     $dsn = "mysql:host=$db_host;dbname=$db_name;charset=UTF8";
-
     try {
         $pdo = new PDO($dsn, $db_user, $db_pass);
 
@@ -24,5 +24,7 @@ if (!file_exists($envPath)) {
     }
 
 }
-
-
+require_once(__DIR__ .'/../queries/categories.table.php');
+require_once(__DIR__ . '/../queries/messages.table.php');
+require_once(__DIR__ .'/../queries/users.table.php');
+require_once(__DIR__ .'/../queries/post.table.php');
