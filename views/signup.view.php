@@ -1,11 +1,12 @@
-<?php 
- if (isset($_SESSION['user_id'])) {
-    header("Location: ../index.php?page=home"); 
-    exit;
-}
- ?>
+
+<!-- //  if (isset($_SESSION['user_id'])) {
+//     header("Location: ../index.php?page=home"); 
+//     exit;
+// } -->
+<?php  require_once('inc/header.php'); ?>
+
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('assets/img/login-bg.jpg')">
+<header class="masthead" style="background-image: url('<?php echo  $url?>/public/img/login-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -29,7 +30,7 @@
                         <div class="alert alert-success">
                             <?php echo $_SESSION['signup_success']; ?>
                         </div>
-                        <?php unset($_SESSION['signup_success']); // Clear the success message after displaying ?>
+                        <?php unset($_SESSION['signup_success']); ?>
                     <?php endif; ?>
 
                     <!-- Error Messages -->
@@ -41,10 +42,10 @@
                             <?php endforeach; ?>
                             </ul>
                         </div>
-                    <?php unset($_SESSION['errors_signup']); // Clear the errors after displaying ?>
+                    <?php unset($_SESSION['errors_signup']); ?>
                     <?php endif; ?>
 
-                    <form action="../controllers/signup_validation.php" method="POST">
+                    <form action="index.php?page=signup" method="POST">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="username" type="text" name="name" placeholder="Enter your username..."  required/>
                             <label for="username">Username</label>
@@ -71,3 +72,4 @@
         </div>
     </div>
 </main>
+<?php  require_once('inc/footer.php'); ?>

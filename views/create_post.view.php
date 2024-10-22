@@ -1,9 +1,10 @@
 <?php 
-require('controllers/auth.php');
-is_authecticated();
+// require('controllers/auth.php');
+// is_authecticated();
+require_once('inc/header.php');
 ?>
 <!-- Page Header-->
-<header class="masthead" style="background-image: url('assets/img/create-bg.png')">
+<header class="masthead" style="background-image: url('<?php echo  $url;?>/public/img/create-bg.png')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -37,7 +38,7 @@ is_authecticated();
                         </div>
                          <?php unset($_SESSION['errors_post']);?>
                     <?php endif ?>
-                    <form action="controllers/post_validation.php" method="POST" enctype="multipart/form-data">
+                    <form action="index.php?create_post" method="POST" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="title" type="text" name="title" placeholder="Enter the post title..."  />
                             <label for="title">Post Title</label>
@@ -60,3 +61,4 @@ is_authecticated();
         </div>
     </div>
 </main>
+<?php require_once('inc/footer.php'); ?>
