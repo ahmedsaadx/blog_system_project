@@ -1,10 +1,5 @@
 
-<!-- //  if (isset($_SESSION['user_id'])) {
-//     header("Location: ../index.php?page=home"); 
-//     exit;
-// } -->
 <?php  require_once('inc/header.php'); ?>
-
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('<?php echo  $url?>/public/img/login-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
