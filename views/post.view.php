@@ -6,7 +6,6 @@
             <div class="col-md-10 col-lg-8 col-xl-7">
                 <div class="post-heading">
                     <h1><?php echo htmlspecialchars($post['title']); ?></h1>
-                    <h2 class="subheading"><?php echo htmlspecialchars($post['subtitle']); ?></h2>
                     <span class="meta">
                         Posted by
                         <a href="#!"><?php echo htmlspecialchars($post['name']); ?></a>

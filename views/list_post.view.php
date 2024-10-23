@@ -1,7 +1,6 @@
 <?php
 require_once('inc/header.php');
 ?>
-
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('<?php echo  $url?>/public/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -24,7 +23,7 @@ require_once('inc/header.php');
             <?php if (!empty($posts)) : ?>
                 <?php foreach ($posts as $post): ?>
                     <div class="post-preview">
-                        <a href="post.php?id=<?php echo $post['post_id']; ?>">
+                        <a href="index.php?page=view_post&post_id=<?php echo $post['id'];?>">
                             <h2 class="post-title"><?php echo htmlspecialchars($post['title']); ?></h2>
                             <h3 class="post-subtitle"><?php echo htmlspecialchars(substr($post['content'], 0, 100)) . '...'; ?></h3>
                         </a>
