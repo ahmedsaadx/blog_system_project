@@ -1,5 +1,6 @@
 <?php
-
+require_once BASE_PATH."core/helpers.php";
+is_authecticated();
 if($_SERVER['REQUEST_METHOD'] !== "POST"){
     require_once BASE_PATH.'views/create_post.view.php';
     exit;
