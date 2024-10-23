@@ -1,10 +1,8 @@
-<?php 
-session_start();
-require_once('../models/connector/handler.php');
-
-
+<?php
+require_once BASE_PATH."core/helpers.php";
+not_authecticated();
 if($_SERVER['REQUEST_METHOD'] !== "POST"){
-    header('location: ../index.php?page=signup');
+    require_once BASE_PATH.'views/signup.view.php';
     exit;
 }else{
     $_SESSION["errors_signup"] = [];
@@ -42,7 +40,7 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
     }  
     
     if(!empty($_SESSION["errors_signup"])){
-        header('location: ../index.php?page=signup');
+        header("location: $url/index.php?page=signup");
         exit;
     }else{
         $check_user_exists_query = "SELECT name,email FROM users WHERE email = :email  OR name = :name  ";
@@ -60,8 +58,8 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
             if ($result['name'] === $name) {
                 $_SESSION["errors_signup"]["name_exists"] = "Name is already taken. Please choose a different name.";
             }
-            header('location: ../index.php?page=signup');
-             exit;  
+            header("location: $url/index.php?page=signup");
+            exit;  
 
         } else { 
             $insert_user_query = "INSERT INTO users (`name`, `email`, `password`) VALUES (:name, :email, :password)";
@@ -71,11 +69,11 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
             $stmt->bindParam(':password', $hash_password);
             if ($stmt->execute()) {
                 $_SESSION['signup_success'] = 'Sign up successful! you can now sign in . Please go to the <a href="../index.php?page=login">login page</a>. ';
-                header('location: ../index.php?page=signup');
+                header("location: $url/index.php?page=signup");
                 exit;
             } else {
                 $_SESSION["errors_signup"]["db_error"] = "Error signing up, please try again.";
-                header('location: ../index.php?page=signup');
+                header("location: $url/index.php?page=signup");
                 exit;
             }
         }
@@ -84,3 +82,4 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
 function test_input($data) {
     return htmlspecialchars(stripslashes(trim($data)));
  }
+

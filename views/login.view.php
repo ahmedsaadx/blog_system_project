@@ -1,11 +1,8 @@
 <?php 
- if (isset($_SESSION['user_id'])) {
-    header("Location: ../index.php?page=home"); 
-    exit;
-}
+require_once('inc/header.php');
  ?>
  <!-- Page Header-->
- <header class="masthead" style="background-image: url('assets/img/login-bg.jpg')">
+ <header class="masthead" style="background-image: url('<?php echo  $url?>/public/img/login-bg.jpg')">
         <div class="container position-relative px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5 justify-content-center">
                 <div class="col-md-10 col-lg-8 col-xl-7">
@@ -29,7 +26,7 @@
                                     <?php echo htmlspecialchars($_SESSION['sign_in_error']) ;  unset($_SESSION['sign_in_error']);?>
                                 </div>
                      <?php endif; ?>
-                        <form action="../controllers/login_validation.php" method="POST">
+                        <form action="index.php?page=login" method="POST">
                             <div class="form-floating mb-3">
                                 <input class="form-control" id="email" type="email" name="email" placeholder="Enter your email..." required />
                                 <label for="email">Email address</label>
@@ -48,3 +45,4 @@
             </div>
         </div>
     </main>
+<?php require_once('inc/footer.php');?>

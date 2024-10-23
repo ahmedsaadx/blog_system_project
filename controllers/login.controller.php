@@ -1,9 +1,8 @@
 <?php
-session_start();
-require_once('../models/connector/handler.php');
-
+require_once BASE_PATH."core/helpers.php";
+not_authecticated();
 if($_SERVER["REQUEST_METHOD"] !== "POST"){
-    header('location: ../index.php?page=login');
+    require_once BASE_PATH.'views/login.view.php';
     exit;
 }else{
     $email=test_input($_POST['email']);
@@ -17,16 +16,16 @@ if($_SERVER["REQUEST_METHOD"] !== "POST"){
         if(password_verify($password,$user['password'])){
             $_SESSION['user_id']= $user['id'];
             $_SESSION["user_name"] = $user['name'];
-            header('location: ../index.php?page=home');
+            header("location: $urlindex/php?page=home");
             exit;
         }else{
             $_SESSION['sign_in_error'] = "Email or password is incorrect.";
-            header('location: ../index.php?page=login');
+            header("location: $url/index.php?page=login");
             exit;
         }
     }else{
         $_SESSION['sign_in_error'] = "Email or password is incorrect";
-        header('location: ../index.php?page=login');
+        header("location: $url/index.php?page=login");
         exit;
     }
 

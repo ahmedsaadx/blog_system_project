@@ -1,10 +1,8 @@
-<?php 
-session_start();
-require_once('../models/connector/handler.php');
-
-
+<?php
+require_once BASE_PATH."core/helpers.php";
+is_authecticated();
 if($_SERVER['REQUEST_METHOD'] !== "POST"){
-    header('location: ../index.php?page=create_post');
+    require_once BASE_PATH.'views/create_post.view.php';
     exit;
 }else{ 
     $_SESSION["errors_post"] = [];
@@ -38,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
         }
 
         if (empty($_SESSION["errors_post"])) {
-            $uploadDir = '../uploads/'; 
+            $uploadDir = 'public/uploads/'; 
             $filePath = $uploadDir . basename($fileName);
 
             if (!move_uploaded_file($_FILES["image"]["tmp_name"], $filePath)) {
@@ -47,30 +45,30 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
         }
     }
     if(!empty($_SESSION["errors_post"])){
-        header("location: ../index.php?page=create_post");
+        header("location: index.php?page=create_post");
         exit;
  
     }else{
         $userId = $_SESSION['user_id'];
         try {
-            $sql = "INSERT INTO posts (title, content, image_path, user_id) VALUES (:title, :content, :image_path, :user_id)";
+            $sql = "INSERT INTO posts (title, content, image_path, user_id ) VALUES (:title, :content, :image_path, :user_id  )";
             $stmt = $pdo->prepare($sql); 
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':content', $content, PDO::PARAM_STR);
             $stmt->bindParam(':image_path', $filePath, PDO::PARAM_STR);
             $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
             if ($stmt->execute()) {
-                $_SESSION["post_successfully"] = "Post created successfully!";
-                header("location: ../index.php?page=create_post");
+               $_SESSION["post_successfully"] = "Post created successfully!";
+               header("location: index.php?page=create_post");
                 exit;
             } else {
                 $_SESSION["errors_post"]["db_error"] = "Failed to create post. Please try again.";
-                header("location: ../index.php?page=create_post");
+                header("location: index.php?page=create_post");
                 exit;
             }
         } catch (PDOException $e) {
             $_SESSION["errors_post"]["db_error"] = "Database error: " . $e->getMessage();
-            header("location: ../index.php?page=create_post");
+            header("location: index.php?page=create_post");
             exit;
         }
     }

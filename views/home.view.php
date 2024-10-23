@@ -1,22 +1,6 @@
-<?php
-
-
-try {
-    $sql = "SELECT p.id, p.title, p.content, p.image_path, p.created_at, u.name 
-            FROM posts p 
-            JOIN users u ON p.user_id = u.id 
-            ORDER BY p.created_at DESC"; 
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute();
-    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error: " . $e->getMessage();
-    exit;
-}
-?>
-
+<?php require_once('inc/header.php'); ?>
 <!-- Page Header -->
-<header class="masthead" style="background-image: url('assets/img/home-bg.jpg')">
+<header class="masthead" style="background-image: url('<?php echo $url?>/public/img/home-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
             <div class="col-md-10 col-lg-8 col-xl-7">
@@ -55,4 +39,4 @@ try {
         </div>
     </div>
 </div>
-
+<?php  require_once('inc/footer.php'); ?>

@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 function is_authecticated(){
     if(!isset($_SESSION['user_id'])){
@@ -7,4 +6,9 @@ function is_authecticated(){
         exit;
     }
 }
-
+function not_authecticated(){
+    if (isset($_SESSION['user_id'])) {
+        header("Location: ../index.php?page=home"); 
+        exit;
+    }
+}
