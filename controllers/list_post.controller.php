@@ -1,4 +1,6 @@
 <?php
+require_once BASE_PATH."core/helpers.php";
+is_authecticated();
 $userId = $_SESSION['user_id']; 
 
 try {

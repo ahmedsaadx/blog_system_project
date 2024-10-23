@@ -10,5 +10,8 @@
             "name": "ahmedsaadx",
             "email": "ahmeddsaadd188@gmail.com"
         }
-    ]
+    ],
+    "require-dev": {
+        "vimeo/psalm": "^5.26"
+    }
 }
