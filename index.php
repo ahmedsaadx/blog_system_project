@@ -18,10 +18,6 @@ if (!file_exists($envPath)) {
     $dsn = "mysql:host=$db_host;dbname=$db_name;charset=UTF8";
     require_once BASE_PATH.'models/connector/handler.php';
 }
-
-
-
-
 $page = isset($_GET['page']) ? htmlspecialchars($_GET['page']) : 'home'; 
 try {
     $valid_pages = [
@@ -33,6 +29,7 @@ try {
         'signup' => 'signup.controller.php',
         'logout' => 'logout.controller.php',
         'create_post' => 'create_post.controller.php',
+        'view_post' => 'view_post.controller.php'
     ];
 
     if (array_key_exists($page, $valid_pages)) {
