@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
         }
 
         if (empty($_SESSION["errors_post"])) {
-            $uploadDir = '../uploads/'; 
+            $uploadDir = 'public/uploads/'; 
             $filePath = $uploadDir . basename($fileName);
 
             if (!move_uploaded_file($_FILES["image"]["tmp_name"], $filePath)) {
@@ -44,21 +44,20 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
         }
     }
     if(!empty($_SESSION["errors_post"])){
-        // header("location: index.php?page=create_post");
-        echo "hi";
+        header("location: index.php?page=create_post");
         exit;
  
     }else{
         $userId = $_SESSION['user_id'];
         try {
-            $sql = "INSERT INTO posts (title, content, image_path, user_id) VALUES (:title, :content, :image_path, :user_id)";
+            $sql = "INSERT INTO posts (title, content, image_path, user_id ) VALUES (:title, :content, :image_path, :user_id  )";
             $stmt = $pdo->prepare($sql); 
             $stmt->bindParam(':title', $title, PDO::PARAM_STR);
             $stmt->bindParam(':content', $content, PDO::PARAM_STR);
             $stmt->bindParam(':image_path', $filePath, PDO::PARAM_STR);
             $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
             if ($stmt->execute()) {
-                $_SESSION["post_successfully"] = "Post created successfully!";
+               $_SESSION["post_successfully"] = "Post created successfully!";
                header("location: index.php?page=create_post");
                 exit;
             } else {

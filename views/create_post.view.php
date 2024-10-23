@@ -38,7 +38,7 @@ require_once('inc/header.php');
                         </div>
                          <?php unset($_SESSION['errors_post']);?>
                     <?php endif ?>
-                    <form action="index.php?create_post" method="POST" enctype="multipart/form-data">
+                    <form action="index.php?page=create_post" method="POST" enctype="multipart/form-data">
                         <div class="form-floating mb-3">
                             <input class="form-control" id="title" type="text" name="title" placeholder="Enter the post title..."  />
                             <label for="title">Post Title</label>
