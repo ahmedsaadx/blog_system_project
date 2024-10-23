@@ -1,6 +1,5 @@
 <?php
-require_once BASE_PATH."core/helpers.php";
-is_authecticated();
+
 if (!isset($_GET['post_id']) || !is_numeric($_GET['post_id'])) {
     header('Location: index.php?page=home');
     exit;
