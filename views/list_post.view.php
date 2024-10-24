@@ -27,11 +27,15 @@ require_once('inc/header.php');
                             <h2 class="post-title"><?php echo htmlspecialchars($post['title']); ?></h2>
                             <h3 class="post-subtitle"><?php echo htmlspecialchars(substr($post['content'], 0, 100)) . '...'; ?></h3>
                         </a>
-                        <p class="post-meta">
-                            Posted by
-                            <a href="#"><?php echo htmlspecialchars($post['name']); ?></a>
-                            on <?php echo date("F j, Y", strtotime($post['created_at'])); ?>
-                        </p>
+
+                        <!-- Edit Button -->
+                        <a href="index.php?page=edit_post&post_id=<?php echo $post['id'];?>" class="btn btn-warning btn-sm mt-2">Edit</a>
+                        
+                        <!-- Delete Button (form to handle delete request) -->
+                        <form action="index.php?page=delete_post" method="POST" style="display:inline;">
+                            <input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+                            <button type="submit" class="btn btn-danger btn-sm mt-2" onclick="return confirm('Are you sure you want to delete this post?')">Delete</button>
+                        </form>
                     </div>
                     <hr class="my-4" />
                 <?php endforeach; ?>
@@ -48,3 +52,6 @@ require_once('inc/header.php');
         </div>
     </div>
 </div>
+<?php
+require_once('inc/footer.php');
+?>
