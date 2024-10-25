@@ -5,7 +5,7 @@ if (!isset($_GET['post_id']) || !is_numeric($_GET['post_id'])) {
     exit;
 } else {
     $post_id = (int)$_GET['post_id'];  
-    $sql = "SELECT p.id, p.title, p.content, p.created_at, p.image_path, u.name 
+    $sql = "SELECT p.id, p.title, p.content, p.created_at, u.name 
             FROM posts p 
             JOIN users u ON p.user_id = u.id 
             WHERE p.id = :post_id";
