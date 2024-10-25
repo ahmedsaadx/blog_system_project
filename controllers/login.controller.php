@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] !== "POST"){
         if(password_verify($password,$user['password'])){
             $_SESSION['user_id']= $user['id'];
             $_SESSION["user_name"] = $user['name'];
-            header("location: $urlindex/php?page=home");
+            header("location: $url/index.php?page=home");
             exit;
         }else{
             $_SESSION['sign_in_error'] = "Email or password is incorrect.";
