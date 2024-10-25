@@ -10,7 +10,7 @@ final class CreateUsersTable extends AbstractMigration
         if (!$this->hasTable('users')) {
             $table = $this->table('users', [
                 'id' => 'id', 
-                'engine' => 'InnoDB' 
+                'engine' => 'InnoDB'
             ]);
 
             $table->addColumn('name', 'string', ['limit' => 255, 'null' => false])
@@ -19,6 +19,7 @@ final class CreateUsersTable extends AbstractMigration
                   ->addColumn('roles', 'enum', ['values' => ['admin', 'user'], 'default' => 'user'])
                   ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
                   ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'update' => 'CURRENT_TIMESTAMP'])
+                  ->addIndex(['email'], ['unique' => true])
                   ->create();
         }
     }
