@@ -12,3 +12,6 @@ function not_authecticated(){
         exit;
     }
 }
+function test_input($data) {
+    return htmlspecialchars(stripslashes(trim($data)));
+ }
