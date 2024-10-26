@@ -1,7 +1,8 @@
 <?php
+
 require_once BASE_PATH."core/helpers.php";
 is_authecticated();
-$userId = $_SESSION['user_id']; 
+$userId = $_SESSION['user_id'];
 
 try {
     $stmt = $pdo->prepare("SELECT p.id , p.title, p.content, p.created_at, u.name FROM posts p JOIN users u ON p.user_id = u.id WHERE p.user_id = :user_id ORDER BY p.created_at DESC");

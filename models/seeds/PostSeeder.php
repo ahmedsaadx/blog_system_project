@@ -20,8 +20,8 @@ final class PostSeeder extends AbstractSeed
                 'content'    => $faker->paragraph(50),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
-                'user_id'    => $faker->randomElement($userIds), 
-                'category_id'=> $faker->numberBetween(1, 5), 
+                'user_id'    => $faker->randomElement($userIds),
+                'category_id' => $faker->numberBetween(1, 5),
             ];
         }
 
