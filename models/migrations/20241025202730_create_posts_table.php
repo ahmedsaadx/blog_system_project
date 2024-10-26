@@ -17,8 +17,8 @@ final class CreatePostsTable extends AbstractMigration
                   ->addColumn('image_path', 'string', ['limit' => 255, 'null' => true])
                   ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
                   ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'update' => 'CURRENT_TIMESTAMP'])
-                  ->addColumn('user_id', 'unsignedInteger', ['null' => false]) 
-                  ->addColumn('category_id', 'unsignedInteger', ['null' => false])
+                  ->addColumn('user_id', 'integer', ['null' => false, 'signed' => false])  // Corrected
+                  ->addColumn('category_id', 'integer', ['null' => false, 'signed' => false])  // Corrected
                   ->addForeignKey('user_id', 'users', 'id', ['delete' => 'CASCADE', 'update' => 'CASCADE', 'constraint' => 'fk_user'])
                   ->addForeignKey('category_id', 'categories', 'id', ['update' => 'CASCADE', 'constraint' => 'fk_category'])
                   ->create();
