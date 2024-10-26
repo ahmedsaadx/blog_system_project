@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 require('controllers/auth.php');
 is_authecticated();
 

@@ -1,6 +1,6 @@
-<?php 
+<?php
 require_once('inc/header.php');
- ?>
+?>
  <!-- Page Header-->
  <header class="masthead" style="background-image: url('<?php echo  $url?>/public/img/login-bg.jpg')">
         <div class="container position-relative px-4 px-lg-5">
@@ -23,7 +23,8 @@ require_once('inc/header.php');
                     <div class="my-5">
                     <?php if (isset($_SESSION['sign_in_error']) && !empty($_SESSION['sign_in_error'])): ?>
                                 <div class="alert alert-danger">
-                                    <?php echo htmlspecialchars($_SESSION['sign_in_error']) ;  unset($_SESSION['sign_in_error']);?>
+                                    <?php echo htmlspecialchars($_SESSION['sign_in_error']) ;
+                        unset($_SESSION['sign_in_error']);?>
                                 </div>
                      <?php endif; ?>
                         <form action="index.php?page=login" method="POST">

@@ -26,8 +26,8 @@ class MessageSeeder extends AbstractSeed
                 'email'     => $faker->email,
                 'subject'   => $faker->sentence(6),
                 'content'   => $faker->paragraph(4),
-                'created_at'=> date('Y-m-d H:i:s'),
-                'updated_at'=> date('Y-m-d H:i:s'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
         }
 
@@ -35,4 +35,3 @@ class MessageSeeder extends AbstractSeed
     }
 
 }
-

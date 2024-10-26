@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
@@ -12,7 +13,7 @@ return [
     'environments' => [
         'default_migration_table' => 'phinxlog',
         'default_environment' => 'development',
-        'development' => 
+        'development' =>
             ['adapter' => $_ENV['DB_ADAPTER'],
             'host' => $_ENV['DB_HOST'],
             'name' => $_ENV['DB_NAME'],

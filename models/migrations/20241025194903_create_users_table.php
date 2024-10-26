@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
@@ -9,7 +10,7 @@ final class CreateUsersTable extends AbstractMigration
     {
         if (!$this->hasTable('users')) {
             $table = $this->table('users', [
-                'id' => 'id', 
+                'id' => 'id',
                 'engine' => 'InnoDB'
             ]);
 

@@ -1,6 +1,5 @@
-<?php 
-// require('controllers/auth.php');
-// is_authecticated();
+<?php
+
 require_once('inc/header.php');
 ?>
 <!-- Page Header-->

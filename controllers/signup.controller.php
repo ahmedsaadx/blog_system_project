@@ -1,10 +1,11 @@
 <?php
+
 require_once BASE_PATH."core/helpers.php";
 not_authecticated();
-if($_SERVER['REQUEST_METHOD'] !== "POST"){
+if ($_SERVER['REQUEST_METHOD'] !== "POST") {
     require_once BASE_PATH.'views/signup.view.php';
     exit;
-}else{
+} else {
     $_SESSION["errors_signup"] = [];
     if (empty($_POST["name"])) {
         $_SESSION["errors_signup"]["signup_name_required"] = "Name is required";
@@ -33,16 +34,16 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
         if (!preg_match($password_pattern, $password)) {
             $_SESSION["errors_signup"]['passwordError_notMatchRule'] = "Password must be at least 8 characters long, and include at least one uppercase letter, one lowercase letter, one number, and one special character.";
         }
-        $hash_password=password_hash($password,PASSWORD_BCRYPT);
-        
-    }else{
+        $hash_password = password_hash($password, PASSWORD_BCRYPT);
+
+    } else {
         $_SESSION["errors_signup"]["passwordError_required"] = "Enter password and confirm.";
-    }  
-    
-    if(!empty($_SESSION["errors_signup"])){
+    }
+
+    if (!empty($_SESSION["errors_signup"])) {
         header("location: $url/index.php?page=signup");
         exit;
-    }else{
+    } else {
         $check_user_exists_query = "SELECT name,email FROM users WHERE email = :email  OR name = :name  ";
         $stmt_check_exists = $pdo->prepare($check_user_exists_query);
         $stmt_check_exists->bindParam(':email', $email);
@@ -50,18 +51,18 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
         $stmt_check_exists->execute();
         if ($stmt_check_exists->rowCount() > 0) {
             $result = $stmt_check_exists->fetch(PDO::FETCH_ASSOC);
-    
+
             if ($result['email'] === $email) {
                 $_SESSION["errors_signup"]["email_exists"] = "Email is already registered. Please use a different email.";
             }
-            
+
             if ($result['name'] === $name) {
                 $_SESSION["errors_signup"]["name_exists"] = "Name is already taken. Please choose a different name.";
             }
             header("location: $url/index.php?page=signup");
-            exit;  
+            exit;
 
-        } else { 
+        } else {
             $insert_user_query = "INSERT INTO users (`name`, `email`, `password`) VALUES (:name, :email, :password)";
             $stmt = $pdo->prepare($insert_user_query);
             $stmt->bindParam(':name', $name);
@@ -79,4 +80,3 @@ if($_SERVER['REQUEST_METHOD'] !== "POST"){
         }
     }
 }
-
